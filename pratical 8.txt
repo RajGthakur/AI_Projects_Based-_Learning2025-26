@@ -1,0 +1,42 @@
+Code:
+Distances between cities 
+
+distance(a, b, 10).
+distance(a, c, 15).
+distance(a, d, 20).
+distance(b, c, 35).
+distance(b, d, 25).
+distance(c, d, 30).
+path(X, Y, D) :- distance(X, Y, D).
+path(X, Y, D) :- distance(Y, X, D).
+tour_cost([_], 0).
+tour_cost([A, B | Rest], Total) :-
+path(A, B, D),
+tour_cost([B | Rest], SubTotal),
+Total is D + SubTotal.
+tsp(Start, _, _) :-
+findall(City, (path(Start, City, _), City \= Start), Cities),
+permutation(Cities, Perm),
+append([Start | Perm], [Start], CompleteRoute),
+tour_cost(CompleteRoute, Cost),
+assertz(result(CompleteRoute, Cost)),
+fail.
+tsp(_, BestRoute, MinCost) :-
+findall(Cost, result(_, Cost), Costs),
+min_list(Costs, MinCost),
+result(BestRoute, MinCost),
+retractall(result(_, _)).
+
+Output:
+Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+
+?- cd('E:/final year/Artificial Intelligence/code/practical8.pl').
+true.
+?- tsp(a, Path, Cost).
+Path = [a, b, d, c, a],
+Cost = 80 .

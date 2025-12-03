@@ -1,0 +1,50 @@
+
+% Tubes (Traversal) Problem using Means–End Analysis
+
+% Define direct connections between locations
+move(a, b).
+move(b, c).
+move(c, d).
+move(d, e).
+move(e, f).
+move(f, g).
+
+% The means_end/3 predicate performs traversal
+% means_end(Start, Goal, Path)
+
+means_end(Start, Goal, Path) :-
+traverse(Start, Goal, [Start], PathRev),
+reverse(PathRev, Path),
+write('Path found: '), write(Path), nl.
+
+% Base case: when Start and Goal are same
+traverse(Goal, Goal, Path, Path) :-
+write('Reached goal: '), write(Goal), nl.
+
+% Recursive traversal using available moves
+traverse(Current, Goal, Visited, Path) :-
+  move(Current, Next),
+\+ member(Next, Visited),
+write('Moving from '), write(Current), write(' to '), write(Next), nl,
+traverse(Next, Goal, [Next|Visited], Path).
+
+Output:
+Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+
+?- cd('E:/final year/Artificial Intelligence/code/pratical7.pl').
+true.
+?- means_end(a, g, Path).
+Moving from a to b
+Moving from b to c
+Moving from c to d
+Moving from d to e
+Moving from e to f
+Moving from f to g
+Reached goal: g
+Path found: [a,b,c,d,e,f,g]
+Path = [a, b, c, d, e, f, g]
