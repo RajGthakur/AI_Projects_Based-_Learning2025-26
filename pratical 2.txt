@@ -1,0 +1,153 @@
+Welcome to SWI-Prolog (threaded, 64 bits, version 9.0.4)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+
+?- cd('E:/final year/Artificial Intelligence/code').
+true.
+
+?- [family].
+true.
+
+%  husband / wife
+?- husband(john, jane).          
+true
+?- wife(jane, john).             
+true
+?- husband(mary, peter).         
+false
+
+%  sibling
+?- sibling(mary, lisa).          
+true
+?- sibling(alex, emma).           
+true
+?- sibling(alex, sophia).         
+false
+
+%  father / mother 
+?- father(john, mary).           
+true
+?- mother(jane, lisa).            
+true
+?- father(mary, emma).            
+false
+
+% son / daughter 
+?- son(alex, mary).               
+true
+?- daughter(lisa, john).          
+true
+?- son(jane, mary).               
+false
+
+%  grandfather / grandmother 
+
+?- grandfather(john, alex).      
+true
+?- grandmother(jane, emma).       
+true
+?- grandfather(peter, emma).      
+false
+
+?- grandparent(john, emma).       
+true
+?- grandparent(mary, sophia).     
+true
+?- grandparent(alex, emma).       
+false
+
+%  great-grandparent
+?- great_grandparent(john, sophia).   
+true
+?- great_grandparent(jane, sophia).   
+true
+?- great_grandparent(peter, emma).    
+false
+
+%  uncle 
+?- uncle(lisa, alex).             
+true
+?- uncle(peter, sophia).          
+true
+?- uncle(john, emma).             
+false
+
+% aunt 
+?- aunt(lisa, alex).              
+true
+?- aunt(mary, sophia).            
+true
+?- aunt(emma, alex).              
+false
+
+%  cousin 
+?- cousin(alex, sophia).         
+true
+?- cousin(emma, sophia).          
+true
+?- cousin(mary, lisa).            
+false
+
+% ancestor 
+?- ancestor(john, sophia).        
+true
+?- ancestor(jane, alex).          
+true
+?- ancestor(emma, john).          
+false
+
+%  descendant 
+?- descendant(alex, john).        
+true
+?- descendant(sophia, jane).      
+true
+?- descendant(john, mary).        
+false
+
+%  brother / sister 
+?- brother(alex, emma).           
+true
+?- sister(lisa, mary).            
+true
+?- brother(jane, john).           
+false
+
+%  brother-in-law 
+?- brother_in_law(peter, lisa).   
+true
+?- brother_in_law(john, peter).   
+false
+
+%  sister-in-law 
+?- sister_in_law(mary, lisa).     
+true
+?- sister_in_law(jane, mary).    
+ false
+
+% father-in-law / mother-in-law 
+
+?- father_in_law(john, peter).    
+true
+?- mother_in_law(jane, peter).    
+true
+?- father_in_law(peter, emma).    
+false
+
+% son-in-law / daughter-in-law 
+
+?- son_in_law(peter, john).       
+true
+?- daughter_in_law(lisa, john).   
+false
+
+%  nephew / niece 
+?- nephew(alex, lisa).          
+ true
+?- niece(sophia, mary).           
+true
+?- niece(emma, lisa).            
+ false
+
